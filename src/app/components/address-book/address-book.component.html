@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Address Book - Amit Kumar</h1>
+  
+    <div class="add-contact">
+      <h2>{{ editingIndex !== null ? 'Edit Contact' : 'Add New Contact' }}</h2>
+      <form (ngSubmit)="addOrUpdateContact()">
+        <div class="form-group">
+          <input [(ngModel)]="newContact.fullname" name="fullname" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="newContact.address" name="address" placeholder="Address" required>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="newContact.city" name="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="newContact.state" name="state" placeholder="State" required>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="newContact.zipCode" name="zipCode" placeholder="Zip Code" required>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="newContact.phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+        </div>
+        <button type="submit">{{ editingIndex !== null ? 'Update Contact' : 'Add Contact' }}</button>
+      </form>
+    </div>
+  
+    <div class="contacts-list">
+      <h2>Person Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Fullname</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts; let i = index">
+            <td>{{contact.fullname}}</td>
+            <td>{{contact.address}}</td>
+            <td>{{contact.city}}</td>
+            <td>{{contact.state}}</td>
+            <td>{{contact.zipCode}}</td>
+            <td>{{contact.phoneNumber}}</td>
+            <td>
+              <button (click)="editContact(i)" class="edit">✏️</button>
+              <button (click)="deleteContact(i)" class="delete">🗑️</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
